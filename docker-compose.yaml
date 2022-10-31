@@ -1,0 +1,28 @@
+version: '3.7'
+services:
+
+  hapi-demo:
+    depends_on:
+      - mongodb_container
+   
+    restart: unless-stopped
+    ports:
+      - 54500:54500
+    image: hapi-demoi
+    container_name: hapi-demo-backendsvc
+    expose:
+      - 54500:54500
+    
+  mongodb_container:
+    image: mongo
+    container_name: mongo
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: root
+    ports:
+      - 27017:27017
+    volumes:
+      - mongodb_data_container:/data/db
+
+volumes:
+  mongodb_data_container:
