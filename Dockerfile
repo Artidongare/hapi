@@ -1,6 +1,6 @@
 FROM node:12.14.1
 
-
+RUN  unmount /var/lib/docker/aufs/mnt/
 
 COPY package*.json ./
 
